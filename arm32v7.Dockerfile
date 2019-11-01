@@ -9,5 +9,4 @@ FROM balenalib/raspberrypi3-alpine:3.8 as hmq
 WORKDIR /
 COPY --from=builder /go/src/github.com/fhmq/hmq/hmq .
 EXPOSE 1883
-
 CMD ["/hmq"]

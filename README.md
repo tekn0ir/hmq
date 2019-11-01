@@ -1,6 +1,17 @@
 Free and High Performance MQTT Broker 
 ============
 
+## Build and publish docker images
+```bash
+docker build -t tekn0ir/hmq:amd64 -f amd64.Dockerfile .
+docker push tekn0ir/hmq:amd64
+docker build -t tekn0ir/hmq:arm32v7 -f arm32v7.Dockerfile .
+docker push tekn0ir/hmq:arm32v7
+docker build -t tekn0ir/hmq:arm64v8 -f arm64v8.Dockerfile .
+docker push tekn0ir/hmq:arm64v8
+docker run -ti --rm -v $(pwd):/app -v ${HOME}/.docker:/root/.docker -w /app mplatform/manifest-tool:latest --username tekn0ir --password <<password>> push from-spec multi-arch-manifest.yaml
+```
+
 ## About
 Golang MQTT Broker, Version 3.1.1, and Compatible
 for [eclipse paho client](https://github.com/eclipse?utf8=%E2%9C%93&q=mqtt&type=&language=) and mosquitto-client
